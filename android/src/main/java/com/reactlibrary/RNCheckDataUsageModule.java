@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import java.text.DecimalFormat;
+import android.net.TrafficStats;
 
 public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
 
@@ -18,7 +19,8 @@ public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public String checkDataUsage() {
-   return ""+getFileSize(android.net.TrafficStats.getTotalRxBytes());
+    long rxBytes = TrafficStats.getTotalRxBytes();
+   return ""+Long.toString(rxBytes);
   }
 
   @Override
