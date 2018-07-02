@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 import java.text.DecimalFormat;
 import android.net.TrafficStats;
+import com.facebook.react.bridge.Promise;
 
 public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
 
