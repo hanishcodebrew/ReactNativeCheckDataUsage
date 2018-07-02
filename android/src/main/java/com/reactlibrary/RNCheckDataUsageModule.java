@@ -10,6 +10,7 @@ import android.net.TrafficStats;
 import com.facebook.react.bridge.Promise;
 
 public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
+  private long mStartRX = 0;
 
   private final ReactApplicationContext reactContext;
 
@@ -21,9 +22,10 @@ public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void checkDataUsage(final Promise promise) {
    try {
-    promise.resolve(""+android.net.TrafficStats.getTotalRxBytes());
+    long rxBytes = TrafficStats.getTotalRxBytes()- mStartRX;
+    promise.resolve(""+Long.toString(rxBytes));
   } catch (Exception ex) {
-    promise.reject("ERR_UNEXPECTED_EXCEPTION", ex);
+    promise.reject("ERR_UNEXPECTED_EXCEPTION","error");
   }
   }
 
