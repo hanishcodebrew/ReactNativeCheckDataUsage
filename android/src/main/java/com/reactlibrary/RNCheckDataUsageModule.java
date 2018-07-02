@@ -20,13 +20,11 @@ public class RNCheckDataUsageModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void checkDataUsage(final Promise promise) {
-   try {
+  public String checkDataUsage() {
+
     long rxBytes = TrafficStats.getTotalRxBytes()- mStartRX;
-    promise.resolve(""+Long.toString(rxBytes));
-  } catch (Exception ex) {
-    promise.reject("ERR_UNEXPECTED_EXCEPTION","error");
-  }
+    return ""+Long.toString(rxBytes);
+   
   }
 
   @Override
